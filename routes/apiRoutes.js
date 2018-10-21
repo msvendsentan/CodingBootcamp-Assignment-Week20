@@ -1,22 +1,16 @@
-const controllers = require("../controllers");
+const controller = require("../controllers/controller");
 const router = require("express").Router();
 
 router.route("/articles")
     // Get all articles
-    .get(controllers.controller.getAllArticles)
+    .get(controller.getAllArticles)
     // Save all articles to db
-    .post()
+    .post(controller.writeAllArticles)
 
 router.route("/articles/:id")
-    // Save/unsave article
-    .post()
+    // Save article
+    .post(controller.saveArticle)
     // Delete article?
-    .delete()
-
-router.route("/notes/:id")
-    // Edit note
-    .post()
-    // Delete note
-    .delete()
+    .delete(controller.deleteArticle)
 
 module.exports = router;
